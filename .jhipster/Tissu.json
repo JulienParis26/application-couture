@@ -1,0 +1,62 @@
+{
+  "applications": "*",
+  "changelogDate": "20220630132451",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "tissu",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ref",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "buySize",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "TissuType",
+      "fieldValues": "JERSEY,MAILLE,SWEAT"
+    },
+    {
+      "fieldName": "buyDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Tissu",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "seller",
+      "otherEntityRelationshipName": "tissu",
+      "ownerSide": false,
+      "relationshipName": "sellers",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "matieres",
+      "ownerSide": false,
+      "relationshipName": "projects",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": false,
+  "service": "serviceImpl"
+}

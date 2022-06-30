@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tissu">
+      <h2 data-cy="tissuDetailsHeading"><span jhiTranslate="coutureApp.tissu.detail.title">Tissu</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tissu.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.tissu.name">Name</span></dt>
+        <dd>
+          <span>{{ tissu.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.tissu.ref">Ref</span></dt>
+        <dd>
+          <span>{{ tissu.ref }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.tissu.color">Color</span></dt>
+        <dd>
+          <span>{{ tissu.color }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.tissu.buySize">Buy Size</span></dt>
+        <dd>
+          <span>{{ tissu.buySize }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.tissu.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'coutureApp.TissuType.' + tissu.type }}">{{ tissu.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.tissu.buyDate">Buy Date</span></dt>
+        <dd>
+          <span>{{ tissu.buyDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.tissu.image">Image</span></dt>
+        <dd>
+          <div *ngIf="tissu.image">
+            <a (click)="openFile(tissu.image, tissu.imageContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ tissu.imageContentType }}, {{ byteSize(tissu.image) }}
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tissu', tissu.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

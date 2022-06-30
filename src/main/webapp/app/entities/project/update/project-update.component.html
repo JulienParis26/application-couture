@@ -1,0 +1,236 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-project-heading" data-cy="ProjectCreateUpdateHeading" jhiTranslate="coutureApp.project.home.createOrEditLabel">
+        Create or edit a Project
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="coutureApp.project.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="coutureApp.project.ref" for="field_ref">Ref</label>
+          <input type="text" class="form-control" name="ref" id="field_ref" data-cy="ref" formControlName="ref" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="coutureApp.project.creationDate" for="field_creationDate">Creation Date</label>
+          <div class="input-group">
+            <input
+              id="field_creationDate"
+              data-cy="creationDate"
+              type="text"
+              class="form-control"
+              name="creationDate"
+              ngbDatepicker
+              #creationDateDp="ngbDatepicker"
+              formControlName="creationDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="creationDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="coutureApp.project.image1" for="field_image1">Image 1</label>
+          <div>
+            <div *ngIf="editForm.get('image1')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('image1')!.value, editForm.get('image1ContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start">{{ editForm.get('image1ContentType')!.value }}, {{ byteSize(editForm.get('image1')!.value) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ image1: null }); editForm.patchValue({ image1ContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_image1"
+              data-cy="image1"
+              (change)="setFileData($event, 'image1', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="image1" id="field_image1" data-cy="image1" formControlName="image1" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="image1ContentType"
+            id="field_image1ContentType"
+            formControlName="image1ContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="coutureApp.project.image2" for="field_image2">Image 2</label>
+          <div>
+            <div *ngIf="editForm.get('image2')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('image2')!.value, editForm.get('image2ContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start">{{ editForm.get('image2ContentType')!.value }}, {{ byteSize(editForm.get('image2')!.value) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ image2: null }); editForm.patchValue({ image2ContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_image2"
+              data-cy="image2"
+              (change)="setFileData($event, 'image2', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="image2" id="field_image2" data-cy="image2" formControlName="image2" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="image2ContentType"
+            id="field_image2ContentType"
+            formControlName="image2ContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="coutureApp.project.image3" for="field_image3">Image 3</label>
+          <div>
+            <div *ngIf="editForm.get('image3')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('image3')!.value, editForm.get('image3ContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start">{{ editForm.get('image3ContentType')!.value }}, {{ byteSize(editForm.get('image3')!.value) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ image3: null }); editForm.patchValue({ image3ContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_image3"
+              data-cy="image3"
+              (change)="setFileData($event, 'image3', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="image3" id="field_image3" data-cy="image3" formControlName="image3" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="image3ContentType"
+            id="field_image3ContentType"
+            formControlName="image3ContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="coutureApp.project.image4" for="field_image4">Image 4</label>
+          <div>
+            <div *ngIf="editForm.get('image4')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('image4')!.value, editForm.get('image4ContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start">{{ editForm.get('image4ContentType')!.value }}, {{ byteSize(editForm.get('image4')!.value) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ image4: null }); editForm.patchValue({ image4ContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_image4"
+              data-cy="image4"
+              (change)="setFileData($event, 'image4', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="image4" id="field_image4" data-cy="image4" formControlName="image4" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="image4ContentType"
+            id="field_image4ContentType"
+            formControlName="image4ContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="coutureApp.project.patron" for="field_patron">Patron</label>
+          <select class="form-control" id="field_patron" data-cy="patron" name="patron" formControlName="patron">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="patronOption.id === editForm.get('patron')!.value?.id ? editForm.get('patron')!.value : patronOption"
+              *ngFor="let patronOption of patronsSharedCollection; trackBy: trackPatronById"
+            >
+              {{ patronOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="coutureApp.project.matieres" for="field_matieres">Matieres</label>
+          <select class="form-control" id="field_matieres" data-cy="matieres" multiple name="matieres" formControlName="matieres">
+            <option
+              [ngValue]="getSelectedTissu(tissuOption, editForm.get('matieres')!.value)"
+              *ngFor="let tissuOption of tissusSharedCollection; trackBy: trackTissuById"
+            >
+              {{ tissuOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

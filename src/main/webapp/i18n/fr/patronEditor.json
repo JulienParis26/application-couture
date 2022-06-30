@@ -1,0 +1,30 @@
+{
+  "coutureApp": {
+    "patronEditor": {
+      "home": {
+        "title": "PatronEditors",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Patron Editor",
+        "createOrEditLabel": "Créer ou éditer un Patron Editor",
+        "notFound": "Aucun Patron Editor trouvé"
+      },
+      "created": "Un nouveau Patron Editor a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Patron Editor avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Patron Editor avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Patron Editor {{ id }} ?"
+      },
+      "detail": {
+        "title": "Patron Editor"
+      },
+      "id": "ID",
+      "name": "Name",
+      "printDate": "Print Date",
+      "number": "Number",
+      "editor": "Editor",
+      "language": "Language",
+      "price": "Price",
+      "image": "Image"
+    }
+  }
+}

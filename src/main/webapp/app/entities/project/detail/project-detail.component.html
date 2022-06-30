@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="project">
+      <h2 data-cy="projectDetailsHeading"><span jhiTranslate="coutureApp.project.detail.title">Project</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ project.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.name">Name</span></dt>
+        <dd>
+          <span>{{ project.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.ref">Ref</span></dt>
+        <dd>
+          <span>{{ project.ref }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.creationDate">Creation Date</span></dt>
+        <dd>
+          <span>{{ project.creationDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.image1">Image 1</span></dt>
+        <dd>
+          <div *ngIf="project.image1">
+            <a (click)="openFile(project.image1, project.image1ContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ project.image1ContentType }}, {{ byteSize(project.image1) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.image2">Image 2</span></dt>
+        <dd>
+          <div *ngIf="project.image2">
+            <a (click)="openFile(project.image2, project.image2ContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ project.image2ContentType }}, {{ byteSize(project.image2) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.image3">Image 3</span></dt>
+        <dd>
+          <div *ngIf="project.image3">
+            <a (click)="openFile(project.image3, project.image3ContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ project.image3ContentType }}, {{ byteSize(project.image3) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.image4">Image 4</span></dt>
+        <dd>
+          <div *ngIf="project.image4">
+            <a (click)="openFile(project.image4, project.image4ContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ project.image4ContentType }}, {{ byteSize(project.image4) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.patron">Patron</span></dt>
+        <dd>
+          <div *ngIf="project.patron">
+            <a [routerLink]="['/patron', project.patron?.id, 'view']">{{ project.patron?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.project.matieres">Matieres</span></dt>
+        <dd>
+          <span *ngFor="let matieres of project.matieres; let last = last">
+            <a [routerLink]="['/tissu', matieres?.id, 'view']">{{ matieres.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/project', project.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

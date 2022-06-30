@@ -1,0 +1,99 @@
+<div>
+  <h2 id="page-heading" data-cy="PatronHeading">
+    <span jhiTranslate="coutureApp.patron.home.title">Patrons</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="coutureApp.patron.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-patron"
+        [routerLink]="['/patron/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="coutureApp.patron.home.createLabel"> Create a new Patron </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="patrons?.length === 0">
+    <span jhiTranslate="coutureApp.patron.home.notFound">No patrons found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="patrons && patrons.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="reset()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name"><span jhiTranslate="coutureApp.patron.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="ref"><span jhiTranslate="coutureApp.patron.ref">Ref</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="type"><span jhiTranslate="coutureApp.patron.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="category">
+            <span jhiTranslate="coutureApp.patron.category">Category</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sizeMin">
+            <span jhiTranslate="coutureApp.patron.sizeMin">Size Min</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sizeMax">
+            <span jhiTranslate="coutureApp.patron.sizeMax">Size Max</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="buyDate">
+            <span jhiTranslate="coutureApp.patron.buyDate">Buy Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="image"><span jhiTranslate="coutureApp.patron.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="from.id"><span jhiTranslate="coutureApp.patron.from">From</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let patron of patrons; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/patron', patron.id, 'view']">{{ patron.id }}</a>
+          </td>
+          <td>{{ patron.name }}</td>
+          <td>{{ patron.ref }}</td>
+          <td jhiTranslate="{{ 'coutureApp.PatronType.' + patron.type }}">{{ patron.type }}</td>
+          <td jhiTranslate="{{ 'coutureApp.Category.' + patron.category }}">{{ patron.category }}</td>
+          <td>{{ patron.sizeMin }}</td>
+          <td>{{ patron.sizeMax }}</td>
+          <td>{{ patron.buyDate | formatMediumDate }}</td>
+          <td>
+            <a *ngIf="patron.image" (click)="openFile(patron.image, patron.imageContentType)" jhiTranslate="entity.action.open">open</a>
+            <span *ngIf="patron.image">{{ patron.imageContentType }}, {{ byteSize(patron.image) }}</span>
+          </td>
+          <td>
+            <div *ngIf="patron.from">
+              <a [routerLink]="['/patron-editor', patron.from?.id, 'view']">{{ patron.from?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/patron', patron.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/patron', patron.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(patron)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
