@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="patronEditor">
+      <h2 data-cy="patronEditorDetailsHeading"><span jhiTranslate="coutureApp.patronEditor.detail.title">Patron Editor</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ patronEditor.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patronEditor.name">Name</span></dt>
+        <dd>
+          <span>{{ patronEditor.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patronEditor.printDate">Print Date</span></dt>
+        <dd>
+          <span>{{ patronEditor.printDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patronEditor.number">Number</span></dt>
+        <dd>
+          <span>{{ patronEditor.number }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patronEditor.editor">Editor</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'coutureApp.Editors.' + patronEditor.editor }}">{{ patronEditor.editor }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patronEditor.language">Language</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'coutureApp.Language.' + patronEditor.language }}">{{ patronEditor.language }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patronEditor.price">Price</span></dt>
+        <dd>
+          <span>{{ patronEditor.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patronEditor.image">Image</span></dt>
+        <dd>
+          <div *ngIf="patronEditor.image">
+            <a (click)="openFile(patronEditor.image, patronEditor.imageContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ patronEditor.imageContentType }}, {{ byteSize(patronEditor.image) }}
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/patron-editor', patronEditor.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

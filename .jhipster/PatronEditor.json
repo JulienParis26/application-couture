@@ -1,0 +1,47 @@
+{
+  "applications": "*",
+  "changelogDate": "20220630123423",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "patron_editor",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "printDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "number",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "editor",
+      "fieldType": "Editors",
+      "fieldValues": "BURDA,LA_MAISON_VICTOR,OTTOBRE,INDEPTS,COUTURE_ACTUELLE"
+    },
+    {
+      "fieldName": "language",
+      "fieldType": "Language",
+      "fieldValues": "FRENCH,ENGLISH,SPANISH"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PatronEditor",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

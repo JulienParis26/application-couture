@@ -1,0 +1,32 @@
+{
+  "coutureApp": {
+    "tissu": {
+      "home": {
+        "title": "Tissus",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Tissu",
+        "createOrEditLabel": "Créer ou éditer un Tissu",
+        "notFound": "Aucun Tissu trouvé"
+      },
+      "created": "Un nouveau Tissu a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tissu avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tissu avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Tissu {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tissu"
+      },
+      "id": "ID",
+      "name": "Name",
+      "ref": "Ref",
+      "color": "Color",
+      "buySize": "Buy Size",
+      "type": "Type",
+      "buyDate": "Buy Date",
+      "image": "Image",
+      "sellers": "Sellers",
+      "projects": "Projects"
+    }
+  }
+}

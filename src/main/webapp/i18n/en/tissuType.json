@@ -1,0 +1,10 @@
+{
+  "coutureApp": {
+    "TissuType": {
+      "null": "",
+      "JERSEY": "JERSEY",
+      "MAILLE": "MAILLE",
+      "SWEAT": "SWEAT"
+    }
+  }
+}

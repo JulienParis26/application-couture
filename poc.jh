@@ -1,0 +1,84 @@
+
+entity PatronEditor {
+name String,
+    printDate LocalDate,
+    number String,
+    editor Editors,
+language Language,
+    price BigDecimal,
+    image Blob
+}
+
+enum Editors{
+BURDA, LA_MAISON_VICTOR, OTTOBRE, INDEPTS, COUTURE_ACTUELLE
+}
+enum TissuType{
+JERSEY, MAILLE, SWEAT
+}
+entity Tissu {
+name String,
+ref String,
+color String,
+buySize String,
+type TissuType,
+buyDate LocalDate,
+    image Blob
+}
+
+entity Seller {
+name String,
+webSite String
+}
+
+enum PatronType{
+PAPER, PDF, ONLINE
+}
+
+enum Category{
+KIDS, MAN, WOMAN
+}
+entity Patron {
+name String,
+ref String,
+    type PatronType,
+    category Category,
+sizeMin Integer,
+sizeMax Integer,
+buyDate LocalDate,
+    image Blob
+}
+
+entity Project {
+name String,
+ref String,
+creationDate LocalDate,
+    image1 Blob
+    image2 Blob
+    image3 Blob
+    image4 Blob
+}
+
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+relationship ManyToMany {
+Seller{Tissu(name)} to Tissu{sellers}
+Project{matieres} to Tissu{projects}
+}
+
+relationship ManyToOne {
+Patron{from} to PatronEditor
+    Project{patron} to Patron{projetcs}
+
+}
+
+
+// Set pagination options
+paginate Tissu, Patron with infinite-scroll
+paginate Project, PatronEditor, Seller with pagination
+
+search Patron, Tissu, Project with elasticsearch
+
+service all with serviceImpl
