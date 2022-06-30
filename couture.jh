@@ -1,0 +1,94 @@
+/** Tissu
+*/
+entity Fabrics {
+	name String required,
+	ref String,
+	uni Boolean required,
+	elastic Boolean required,
+    elasticRate Float,
+    rating Integer min(1) max(5),
+    colorName String,
+	color1 String required,
+	color2 String ,
+	color3 String ,
+	laize Integer,
+   	meterPrice Float,
+	meterBuy Float,
+	meterInStock Float,
+	buyDate LocalDate,
+    gramPerMeter Integer,
+    image1 ImageBlob  required minbytes (256) maxbytes (1024),
+    image2 ImageBlob   minbytes (256) maxbytes (1024),
+    image3 ImageBlob   minbytes (256) maxbytes (1024),
+}
+
+/** Tissu - composition
+* coton, viscose, tancelle, polyestere, jean
+*/
+entity Materials{
+	name String required,
+    code String required min(5) 
+    description String max (1024)
+}
+/** Tissu - type
+* Bouclette, jersey, bord cote, jean
+*/
+entity FabricTypes {
+	name String required,
+    code String required min(5) 
+    description String max (1024)
+}
+
+/** Tissu - designer, marque, createur
+*/
+entity FabricDesigners {
+	name String required,
+    code String required min(5) 
+    description String max (1024)
+    website String max (256)
+}
+
+
+/** Tissu - pour robe, pour pantalon, sous-vêtements
+*/
+entity FabricUses {
+	name String required,
+    code String required min(5) 
+}
+/** Tissu - ecotex, got
+*/
+entity FabricLabels {
+	name String required,
+    code String required min(3) 
+}
+/** Tissu - entretien, lavable, repassable, etc...
+*/
+entity FabricMaintenance {
+	name String required,
+    code String required min(3) 
+}
+
+relationship ManyToMany {
+	Fabrics{fabricTypes(name) required} to FabricTypes{fabrics(name)}
+	Fabrics{materials(name) required} to Materials{fabrics(name)}
+	Fabrics{uses(name) } to FabricUses{fabrics(name)}
+	Fabrics{maintenances(name) } to FabricMaintenance{fabrics(name)}
+	Fabrics{labels(name) } to FabricLabels{fabrics(name)}
+}
+
+relationship OneToMany {
+	FabricDesigners{fabrics(name)} to Fabrics{designer(name)}
+
+}
+
+
+// Set pagination options
+paginate Tissu, Patron with infinite-scroll
+paginate Project, PatronEditor, Seller with pagination
+
+//require elasticsearch
+search Patron, Tissu, Project with elasticsearch
+
+service all with serviceImpl 
+
+
