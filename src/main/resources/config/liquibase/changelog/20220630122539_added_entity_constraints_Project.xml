@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Project.
+    -->
+    <changeSet id="20220630122539-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="patron_id"
+                                 baseTableName="project"
+                                 constraintName="fk_project__patron_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="patron"/>
+
+        <addForeignKeyConstraint baseColumnNames="project_id"
+                                 baseTableName="rel_project__matieres"
+                                 constraintName="fk_rel_project__matieres__project_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project"/>
+
+        <addForeignKeyConstraint baseColumnNames="matieres_id"
+                                 baseTableName="rel_project__matieres"
+                                 constraintName="fk_rel_project__matieres__matieres_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tissu"/>
+    </changeSet>
+</databaseChangeLog>

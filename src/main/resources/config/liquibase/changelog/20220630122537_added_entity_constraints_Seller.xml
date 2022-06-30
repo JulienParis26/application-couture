@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Seller.
+    -->
+    <changeSet id="20220630122537-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="seller_id"
+                                 baseTableName="rel_seller__tissu"
+                                 constraintName="fk_rel_seller__tissu__seller_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="seller"/>
+
+        <addForeignKeyConstraint baseColumnNames="tissu_id"
+                                 baseTableName="rel_seller__tissu"
+                                 constraintName="fk_rel_seller__tissu__tissu_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tissu"/>
+    </changeSet>
+</databaseChangeLog>
