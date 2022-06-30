@@ -1,0 +1,65 @@
+{
+  "applications": "*",
+  "changelogDate": "20220630132508",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "patron",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ref",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "PatronType",
+      "fieldValues": "PAPER,PDF,ONLINE"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "Category",
+      "fieldValues": "KIDS,MAN,WOMAN"
+    },
+    {
+      "fieldName": "sizeMin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "sizeMax",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "buyDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Patron",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "patronEditor",
+      "otherEntityRelationshipName": "patron",
+      "relationshipName": "from",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "patron",
+      "relationshipName": "projetcs",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": false,
+  "service": "serviceImpl"
+}
