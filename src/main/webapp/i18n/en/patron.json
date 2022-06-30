@@ -1,0 +1,33 @@
+{
+  "coutureApp": {
+    "patron": {
+      "home": {
+        "title": "Patrons",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Patron",
+        "createOrEditLabel": "Create or edit a Patron",
+        "notFound": "No Patrons found"
+      },
+      "created": "A new Patron is created with identifier {{ param }}",
+      "updated": "A Patron is updated with identifier {{ param }}",
+      "deleted": "A Patron is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Patron {{ id }}?"
+      },
+      "detail": {
+        "title": "Patron"
+      },
+      "id": "ID",
+      "name": "Name",
+      "ref": "Ref",
+      "type": "Type",
+      "category": "Category",
+      "sizeMin": "Size Min",
+      "sizeMax": "Size Max",
+      "buyDate": "Buy Date",
+      "image": "Image",
+      "from": "From",
+      "projetcs": "Projetcs"
+    }
+  }
+}

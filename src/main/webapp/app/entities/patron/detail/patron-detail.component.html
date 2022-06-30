@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="patron">
+      <h2 data-cy="patronDetailsHeading"><span jhiTranslate="coutureApp.patron.detail.title">Patron</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ patron.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.name">Name</span></dt>
+        <dd>
+          <span>{{ patron.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.ref">Ref</span></dt>
+        <dd>
+          <span>{{ patron.ref }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'coutureApp.PatronType.' + patron.type }}">{{ patron.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.category">Category</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'coutureApp.Category.' + patron.category }}">{{ patron.category }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.sizeMin">Size Min</span></dt>
+        <dd>
+          <span>{{ patron.sizeMin }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.sizeMax">Size Max</span></dt>
+        <dd>
+          <span>{{ patron.sizeMax }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.buyDate">Buy Date</span></dt>
+        <dd>
+          <span>{{ patron.buyDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.image">Image</span></dt>
+        <dd>
+          <div *ngIf="patron.image">
+            <a (click)="openFile(patron.image, patron.imageContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ patron.imageContentType }}, {{ byteSize(patron.image) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="coutureApp.patron.from">From</span></dt>
+        <dd>
+          <div *ngIf="patron.from">
+            <a [routerLink]="['/patron-editor', patron.from?.id, 'view']">{{ patron.from?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/patron', patron.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

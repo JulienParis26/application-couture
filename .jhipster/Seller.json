@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20220630122537",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "seller",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "webSite",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Seller",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "tissu",
+      "otherEntityRelationshipName": "sellers",
+      "ownerSide": true,
+      "relationshipName": "tissu",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}
