@@ -1,0 +1,63 @@
+{
+  "applications": "*",
+  "changelogDate": "20220630132509",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "project",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ref",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "image1",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "image2",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "image3",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "image4",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Project",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "patron",
+      "otherEntityRelationshipName": "projetcs",
+      "relationshipName": "patron",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "tissu",
+      "otherEntityRelationshipName": "projects",
+      "ownerSide": true,
+      "relationshipName": "matieres",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": false,
+  "service": "serviceImpl"
+}
