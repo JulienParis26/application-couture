@@ -1,0 +1,32 @@
+{
+  "coutureApp": {
+    "tissu": {
+      "home": {
+        "title": "Tissus",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tissu",
+        "createOrEditLabel": "Create or edit a Tissu",
+        "notFound": "No Tissus found"
+      },
+      "created": "A new Tissu is created with identifier {{ param }}",
+      "updated": "A Tissu is updated with identifier {{ param }}",
+      "deleted": "A Tissu is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tissu {{ id }}?"
+      },
+      "detail": {
+        "title": "Tissu"
+      },
+      "id": "ID",
+      "name": "Name",
+      "ref": "Ref",
+      "color": "Color",
+      "buySize": "Buy Size",
+      "type": "Type",
+      "buyDate": "Buy Date",
+      "image": "Image",
+      "sellers": "Sellers",
+      "projects": "Projects"
+    }
+  }
+}
