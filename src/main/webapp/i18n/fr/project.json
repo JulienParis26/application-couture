@@ -1,0 +1,32 @@
+{
+  "coutureApp": {
+    "project": {
+      "home": {
+        "title": "Projects",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project",
+        "createOrEditLabel": "Créer ou éditer un Project",
+        "notFound": "Aucun Project trouvé"
+      },
+      "created": "Un nouveau Project a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project"
+      },
+      "id": "ID",
+      "name": "Name",
+      "ref": "Ref",
+      "creationDate": "Creation Date",
+      "image1": "Image 1",
+      "image2": "Image 2",
+      "image3": "Image 3",
+      "image4": "Image 4",
+      "patron": "Patron",
+      "matieres": "Matieres"
+    }
+  }
+}
